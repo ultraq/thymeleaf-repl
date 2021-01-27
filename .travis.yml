@@ -1,0 +1,6 @@
+language: groovy
+jdk:
+ - openjdk11
+
+# No need to run tasks for dependencies
+install: skip
