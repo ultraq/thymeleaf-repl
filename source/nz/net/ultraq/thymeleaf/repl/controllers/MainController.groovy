@@ -19,13 +19,15 @@ package nz.net.ultraq.thymeleaf.repl.controllers
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 
+import javax.servlet.http.HttpServletResponse
+
 /**
  * Main (and likely the only) controller for the Thymeleaf REPL website.
  * 
  * @author Emanuel Rabina
  */
 @Controller
-class HomeController {
+class MainController {
 
 	/**
 	 * Serve the main page.
@@ -33,8 +35,9 @@ class HomeController {
 	 * @return
 	 */
 	@GetMapping('/')
-	String index() {
+	String index(HttpServletResponse response) {
 
+		response.addHeader('X-Frame-Options', 'DENY')
 		return 'Main'
 	}
 }
