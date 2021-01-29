@@ -1,11 +1,20 @@
 @charset "UTF-8";
 
+
+/* Tools/variables */
+/* -------------------------------------------------------------------------- */
+
 :root {
 	--background-colour: #ffffff;
 	--font-colour: #333333;
-
 	--thymeleaf-green: #005f0f;
+
+	--container-background-colour: #ececec;
 }
+
+
+/* Elements */
+/* -------------------------------------------------------------------------- */
 
 * {
 	box-sizing: border-box;
@@ -18,17 +27,39 @@
 
 body {
 	background-color: white;
-	border-left: 0.25em solid var(--thymeleaf-green);
+	border-left: 0.5em solid var(--thymeleaf-green);
 	color: #333333;
 	font: 1em / 1.5 'Ubuntu', sans-serif;
 	height: 100vh;
-	padding: 0 0.5em 0.5em 0.25em;
 }
 
-/* Center the test items for now */
-body {
+h1 {
+	font-size: 2em;
+	font-style: italic;
+	font-weight: normal;
+}
+
+
+/* Components */
+/* -------------------------------------------------------------------------- */
+
+.header-container {
+	align-items: center;
+	background-color: var(--container-background-colour);
+	border-bottom: 1px solid var(--thymeleaf-green);
+	display: flex;
+	justify-content: center;
+}
+
+.header-logo {
+	margin-right: 1em;
+	width: 2.5rem;
+}
+
+.body-container {
 	align-items: center;
 	display: flex;
 	font-size: 1em;
 	justify-content: center;
+	padding: 1em;
 }
