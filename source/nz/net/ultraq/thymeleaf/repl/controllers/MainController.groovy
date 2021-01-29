@@ -18,6 +18,7 @@ package nz.net.ultraq.thymeleaf.repl.controllers
 
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 
 import javax.servlet.http.HttpServletResponse
 
@@ -32,10 +33,24 @@ class MainController {
 	/**
 	 * Serve the main page.
 	 * 
+	 * @param response
 	 * @return
 	 */
 	@GetMapping('/')
 	String index(HttpServletResponse response) {
+
+		response.addHeader('X-Frame-Options', 'DENY')
+		return 'Main'
+	}
+
+	/**
+	 * Process the template in the form.
+	 * 
+	 * @param response
+	 * @return
+	 */
+	@PostMapping('/')
+	String process(HttpServletResponse response) {
 
 		response.addHeader('X-Frame-Options', 'DENY')
 		return 'Main'

@@ -10,6 +10,8 @@
 	--thymeleaf-green: #005f0f;
 
 	--container-background-colour: #ececec;
+	--label-colour: #ffffff;
+	--button-colour: #ffffff;
 }
 
 
@@ -30,7 +32,7 @@ body {
 	border-left: 0.5em solid var(--thymeleaf-green);
 	color: #333333;
 	font: 1em / 1.5 'Ubuntu', sans-serif;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 h1 {
@@ -39,6 +41,40 @@ h1 {
 	font-weight: normal;
 }
 
+form {
+	max-width: 50rem;
+	width: 100%;
+}
+
+label {
+	background-color: var(--thymeleaf-green);
+	color: var(--label-colour);
+	cursor: pointer;
+	display: inline-flex;
+	font-style: italic;
+	margin-bottom: 0.5em;
+	margin-left: -2em;
+	padding: 0.25em 1em 0.25em 2em;
+}
+
+textarea {
+	border: 1px solid var(--thymeleaf-green);
+	display: block;
+	font-family: "Ubuntu Mono", monospace;
+	min-height: 10em;
+	padding: 0.5em;
+	width: 100%;
+}
+
+button {
+	background-color: var(--thymeleaf-green);
+	border: none;
+	border-radius: 0;
+	color: var(--button-colour);
+	cursor: pointer;
+	font-style: italic;
+	padding: 0.75em;
+}
 
 /* Components */
 /* -------------------------------------------------------------------------- */
@@ -61,5 +97,15 @@ h1 {
 	display: flex;
 	font-size: 1em;
 	justify-content: center;
-	padding: 1em;
+	padding: 2em 1em;
+}
+
+.inputgroup + .inputgroup {
+	margin-top: 2em;
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 2em;
 }
