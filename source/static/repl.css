@@ -84,8 +84,18 @@ button {
 }
 
 .header-logo {
+	height: 40px;
 	margin-right: 1em;
-	width: 2.5rem;
+	width: 40px;
+}
+
+.header-links {
+	display: flex;
+}
+
+.link-logo img {
+	height: 30px;
+	width: 30px;
 }
 
 .body-container {
@@ -111,4 +121,12 @@ button {
 
 .processing-error {
 	border: 1px solid var(--error-colour);
+}
+
+.footer-container {
+	align-items: center;
+	background-color: var(--container-background-colour);
+	border-top: 1px solid var(--thymeleaf-green);
+	display: flex;
+	justify-content: center;
 }

@@ -23,6 +23,7 @@ plugins {
 apply from: 'https://raw.githubusercontent.com/ultraq/gradle-support/3.4.0/gradle-support.gradle'
 
 description = 'A website for being able to try out snippets of Thymeleaf code'
+version = '0.1.0'
 
 dependencies {
 	implementation(
@@ -40,4 +41,10 @@ dependencies {
 	developmentOnly(
 		'org.springframework.boot:spring-boot-devtools'
 	)
+}
+
+processResources {
+	expand([
+		moduleVersion: version
+	])
 }
