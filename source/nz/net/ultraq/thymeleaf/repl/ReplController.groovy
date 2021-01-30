@@ -69,9 +69,7 @@ class ReplController {
 
 		try {
 			def result = templateEngine.process(pageObject.template, new Context(
-				variables: [
-					data: new JsonSlurper().parseText(pageObject.data)
-				]
+				variables: new JsonSlurper().parseText(pageObject.data)
 			))
 			model.addAttribute('pageObject', new ReplPageObject(
 				template: pageObject.template,
