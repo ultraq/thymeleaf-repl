@@ -76,15 +76,14 @@ class ReplController {
 	 * Process the template in the form.
 	 * 
 	 * @param pageObject
-	 * @param templateEngine
 	 * @param model
 	 * @return
 	 */
 	@PostMapping('/')
-	String process(ReplPageObject pageObject, SpringTemplateEngine templateEngine, Model model) {
+	String process(ReplPageObject pageObject, Model model) {
 
 		try {
-			def result = templateEngine.process(pageObject.template, new Context(
+			def result = new SpringTemplateEngine().process(pageObject.template, new Context(
 				variables: new JsonSlurper().parseText(pageObject.data)
 			))
 			model.addAttribute('pageObject', new ReplPageObject(
