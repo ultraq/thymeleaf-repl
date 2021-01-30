@@ -27,7 +27,7 @@
 		</header>
 
 		<div class="body-container">
-			<form method="post" action="" class="body-section" th:action="@{/}" th:object="${pageObject}">
+			<form method="post" action="" class="body-section" th:action="@{/}" th:object="${repl}">
 				<div class="inputgroup">
 					<label for="template">Template code</label>
 					<textarea id="template" name="template" placeholder="<p th:text=&quot;'Hi ' + ${name} + '! 👋'&quot;></p>"
@@ -45,11 +45,11 @@
 				</div>
 			</form>
 
-			<div class="body-section" th:if="${pageObject.result}">
+			<div class="body-section" th:if="${repl.result}">
 				<label for="result">Processing result</label>
 				<textarea id="result" placeholder="Press 'Process template!' to see the result"
-					th:class="${pageObject.error ? 'processing-error' : ''}"
-					th:text="${pageObject.result}"></textarea>
+					th:class="${repl.error ? 'processing-error' : ''}"
+					th:text="${repl.result}"></textarea>
 			</div>
 		</div>
 

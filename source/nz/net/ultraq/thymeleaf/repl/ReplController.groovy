@@ -68,7 +68,7 @@ class ReplController {
 	@GetMapping('/')
 	String index(Model model) {
 
-		model.addAttribute('pageObject', defaultPageObject)
+		model.addAttribute('repl', defaultPageObject)
 		return 'Main'
 	}
 
@@ -82,25 +82,21 @@ class ReplController {
 	@PostMapping('/')
 	String process(ReplPageObject pageObject, Model model) {
 
+		def resultObject = new ReplPageObject(
+			template: pageObject.template,
+			data: pageObject.data
+		)
 		try {
-			def result = new SpringTemplateEngine().process(pageObject.template, new Context(
+			resultObject.result = new SpringTemplateEngine().process(pageObject.template, new Context(
 				variables: new JsonSlurper().parseText(pageObject.data)
-			))
-			model.addAttribute('pageObject', new ReplPageObject(
-				template: pageObject.template,
-				data: pageObject.data,
-				result: result
 			))
 		}
 		catch (TemplateProcessingException ex) {
 			logger.error('Data used: {}', pageObject.data)
-			model.addAttribute('pageObject', new ReplPageObject(
-				template: pageObject.template,
-				data: pageObject.data,
-				result: ex.rootCause,
-				error: true
-			))
+			resultObject.result = ex.rootCause
+			resultObject.error = true
 		}
+		model.addAttribute('repl', resultObject)
 		return 'Main'
 	}
 }
