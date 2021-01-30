@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+import org.apache.tools.ant.filters.ReplaceTokens
+
+import java.time.ZoneId
+import java.time.ZonedDateTime
+
 plugins {
 	id 'groovy'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
@@ -23,7 +28,7 @@ plugins {
 apply from: 'https://raw.githubusercontent.com/ultraq/gradle-support/3.4.0/gradle-support.gradle'
 
 description = 'A website for being able to try out snippets of Thymeleaf code'
-version = '0.1.0'
+version = ZonedDateTime.now(ZoneId.of("Pacific/Auckland")).format('yyyy.MM.dd-\'build\'HHmmss')
 
 dependencies {
 	implementation(
@@ -44,7 +49,7 @@ dependencies {
 }
 
 processResources {
-	expand([
-		moduleVersion: version
-	])
+	filesMatching(['**/*.properties', '**/org.codehaus.groovy.runtime.ExtensionModule']) {
+		filter(ReplaceTokens, tokens: [ 'version': version ])
+	}
 }

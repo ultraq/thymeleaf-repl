@@ -18,9 +18,11 @@ package nz.net.ultraq.thymeleaf.repl
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.thymeleaf.context.Context
 import org.thymeleaf.exceptions.TemplateProcessingException
@@ -42,6 +44,20 @@ class ReplController {
 		template: '<p th:text="\'Hi \' + ${name} + \'! 👋\'"></p>',
 		data: '{ "name": "Thymeleaf" }'
 	)
+
+	@Value('${thymeleaf-repl.version}')
+	private String version
+
+	/**
+	 * Add any global attributes to the model.
+	 * 
+	 * @param model
+	 */
+	@ModelAttribute
+	void addAttributes(Model model) {
+
+		model.addAttribute('version', version)
+	}
 
 	/**
 	 * Serve the main page.
