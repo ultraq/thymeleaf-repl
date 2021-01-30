@@ -34,7 +34,9 @@ class ResponseHeadersFilter implements Filter {
 	@Override
 	void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
 
-		response.addHeader('X-Frame-Options', 'DENY')
+		if (request.requestURI == '/') {
+			response.addHeader('X-Frame-Options', 'DENY')
+		}
 		chain.doFilter(request, response)
 	}
 }
