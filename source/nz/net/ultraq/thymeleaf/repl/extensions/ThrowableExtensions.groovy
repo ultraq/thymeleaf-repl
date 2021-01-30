@@ -14,34 +14,23 @@
  * limitations under the License.
  */
 
-package nz.net.ultraq.thymeleaf.repl
-
-import nz.net.ultraq.thymeleaf.spring.environment.SpringEnvironmentDialect
-
-import org.springframework.boot.SpringApplication
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.context.annotation.Bean
+package nz.net.ultraq.thymeleaf.repl.extensions
 
 /**
- * Configuration and main class for the Thymeleaf REPL website as a Spring Boot
- * application.
+ * Extensions to the {@code Throwable} class.
  * 
  * @author Emanuel Rabina
  */
-@SpringBootApplication
-class ThymeleafRepl {
-
-	@Bean
-	SpringEnvironmentDialect springEnvironmentDialect() {
-		return new SpringEnvironmentDialect()
-	}
+class ThrowableExtensions {
 
 	/**
-	 * Run the website as a Spring Boot application!
+	 * Go throw the cause stack and pick out the root cause for the exception.
 	 * 
-	 * @param args
+	 * @param self
+	 * @return
 	 */
-	static void main(String[] args) {
-		SpringApplication.run(ThymeleafRepl, args)
+	static Throwable getRootCause(Throwable self) {
+
+		return self.cause?.rootCause ?: self
 	}
 }

@@ -13,7 +13,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous"/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700,700italic"/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
 	<link rel="stylesheet" href="../static/repl.css" th:href="@{/repl.css}"/>
 
 	<script env:if="development" src="http://localhost:35729/livereload.js" defer></script>
@@ -27,21 +27,30 @@
 		</header>
 
 		<div class="body-container">
-			<form method="post" action="" th:action="/">
+			<form method="post" action="" class="body-section" th:action="@{/}" th:object="${pageObject}">
 				<div class="inputgroup">
 					<label for="template">Template code</label>
-					<textarea id="template" name="template"></textarea>
+					<textarea id="template" name="template" placeholder="<p th:text=&quot;'Hi ' + ${name} + '! 👋'&quot;></p>"
+						th:field="*{template}"></textarea>
 				</div>
 
 				<div class="inputgroup">
 					<label for="data">Template data</label>
-					<textarea id="data" name="data"></textarea>
+					<textarea id="data" name="data" placeholder="{ &quot;name&quot;: &quot;Thymeleaf&quot; }"
+						th:field="*{data}"></textarea>
 				</div>
 
 				<div class="actions">
 					<button type="submit">Process template!</button>
 				</div>
 			</form>
+
+			<div class="body-section">
+				<label for="result">Processing result</label>
+				<textarea id="result" placeholder="Press 'Process template!' to see the result"
+					th:class="${pageObject.error ? 'processing-error' : ''}"
+					th:text="${pageObject.result}"></textarea>
+			</div>
 		</div>
 
 	</main>
