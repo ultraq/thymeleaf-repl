@@ -45,7 +45,7 @@
 				</div>
 			</form>
 
-			<div class="body-section">
+			<div class="body-section" th:if="${pageObject.result}">
 				<label for="result">Processing result</label>
 				<textarea id="result" placeholder="Press 'Process template!' to see the result"
 					th:class="${pageObject.error ? 'processing-error' : ''}"
