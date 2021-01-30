@@ -35,9 +35,9 @@ class ResponseHeadersFilter implements Filter {
 
 	private static final List<String> cspBase = [
 		// Fetch directives
-		'default-src \'self\'',
+		'default-src \'none\'',
 		'font-src https://fonts.gstatic.com',
-		'object-src \'none\'',
+		'img-src \'self\'',
 		'style-src \'self\' https://fonts.googleapis.com https://cdnjs.cloudflare.com',
 
 		// Document directives
@@ -47,12 +47,11 @@ class ResponseHeadersFilter implements Filter {
 		'form-action \'self\'',
 		'frame-ancestors \'none\''
 	]
-	private static final List<String> cspDevelopment = [
+	private static final List<String> cspDevelopment = cspBase + [
 		'script-src localhost:35729',
 		'connect-src ws://localhost:35729'
 	]
-	private static final List<String> cspProduction = [
-	  'script-src \'none\'',
+	private static final List<String> cspProduction = cspBase + [
 		'upgrade-insecure-requests'
 	]
 
@@ -63,8 +62,7 @@ class ResponseHeadersFilter implements Filter {
 	void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
 
 		if (request.requestURI == '/') {
-			response.addHeader('Content-Security-Policy',
-				(cspBase + (environment.development ? cspDevelopment : cspProduction)).join('; '))
+			response.addHeader('Content-Security-Policy', (environment.development ? cspDevelopment : cspProduction).join('; '))
 			response.addHeader('X-Content-Type-Options', 'nosniff')
 			response.addHeader('X-Frame-Options', 'DENY')
 			response.addHeader('X-XSS-Protection', '1; mode=block')
