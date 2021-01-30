@@ -33,6 +33,11 @@ body {
 	border-left: 0.5em solid var(--thymeleaf-green);
 	color: #333333;
 	font: 1em / 1.5 'Ubuntu', sans-serif;
+}
+
+main {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 	min-height: 100vh;
 }
 
