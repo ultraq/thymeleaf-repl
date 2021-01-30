@@ -14,5 +14,5 @@ demonstrate the library.  Having had to answer lots questions for Thymeleaf, I
 wished for a similar environment for Thymeleaf, so this website aims to be just
 that for me.
 
-GitHub issue: https://github.com/thymeleaf/thymeleaf/issues/817
-REPL on Wikipedia: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
+ - GitHub issue: https://github.com/thymeleaf/thymeleaf/issues/817
+ - REPL on Wikipedia: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
