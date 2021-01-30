@@ -17,7 +17,9 @@
 package nz.net.ultraq.thymeleaf.repl
 
 import org.springframework.stereotype.Component
+import org.springframework.web.context.support.StandardServletEnvironment
 
+import javax.inject.Inject
 import javax.servlet.Filter
 import javax.servlet.FilterChain
 import javax.servlet.ServletRequest
@@ -31,14 +33,34 @@ import javax.servlet.ServletResponse
 @Component
 class ResponseHeadersFilter implements Filter {
 
+	private static final List<String> cspBase = [
+		'default-src \'self\'',
+		'base-uri \'none\'',
+		'font-src https://fonts.gstatic.com',
+		'object-src \'none\'',
+		'style-src \'self\' https://fonts.googleapis.com https://cdnjs.cloudflare.com'
+	]
+	private static final List<String> cspDevelopment = [
+		'script-src localhost:35729',
+		'connect-src ws://localhost:35729'
+	]
+	private static final List<String> cspProduction = [
+	  'script-src \'none\''
+	]
+
+	@Inject
+	private StandardServletEnvironment environment
+
 	@Override
 	void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
 
 		if (request.requestURI == '/') {
+			response.addHeader('Content-Security-Policy',
+				(cspBase + (environment.development ? cspDevelopment : cspProduction)).join('; '))
+			response.addHeader('X-Content-Type-Options', 'nosniff')
 			response.addHeader('X-Frame-Options', 'DENY')
+			response.addHeader('X-XSS-Protection', '1; mode=block')
 		}
-		response.addHeader('X-Content-Type-Options', 'nosniff')
-		response.addHeader('X-XSS-Protection', '1; mode=block')
 
 		chain.doFilter(request, response)
 	}
