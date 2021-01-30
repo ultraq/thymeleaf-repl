@@ -37,6 +37,9 @@ class ResponseHeadersFilter implements Filter {
 		if (request.requestURI == '/') {
 			response.addHeader('X-Frame-Options', 'DENY')
 		}
+		response.addHeader('X-Content-Type-Options', 'nosniff')
+		response.addHeader('X-XSS-Protection', '1; mode=block')
+
 		chain.doFilter(request, response)
 	}
 }
