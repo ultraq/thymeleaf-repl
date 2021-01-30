@@ -34,18 +34,26 @@ import javax.servlet.ServletResponse
 class ResponseHeadersFilter implements Filter {
 
 	private static final List<String> cspBase = [
+		// Fetch directives
 		'default-src \'self\'',
-		'base-uri \'none\'',
 		'font-src https://fonts.gstatic.com',
 		'object-src \'none\'',
-		'style-src \'self\' https://fonts.googleapis.com https://cdnjs.cloudflare.com'
+		'style-src \'self\' https://fonts.googleapis.com https://cdnjs.cloudflare.com',
+
+		// Document directives
+		'base-uri \'none\'',
+
+		// Navigation directives
+		'form-action \'self\'',
+		'frame-ancestors \'none\''
 	]
 	private static final List<String> cspDevelopment = [
 		'script-src localhost:35729',
 		'connect-src ws://localhost:35729'
 	]
 	private static final List<String> cspProduction = [
-	  'script-src \'none\''
+	  'script-src \'none\'',
+		'upgrade-insecure-requests'
 	]
 
 	@Inject
