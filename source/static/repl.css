@@ -143,5 +143,6 @@ footer {
 .footer-section {
 	margin: 0 auto;
 	max-width: 50rem;
+	padding: 1em;
 	width: 100%;
 }
