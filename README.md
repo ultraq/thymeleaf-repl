@@ -2,7 +2,7 @@
 Thymeleaf REPL
 ==============
 
-[![Build Status](https://travis-ci.com/ultraq/thymeleaf-repl.svg)](https://travis-ci.com/ultraq/thymeleaf-repl)
+[![Build Status](https://github.com/ultraq/thymeleaf-repl/actions/workflows/build.yml/badge.svg)](https://github.com/ultraq/thymeleaf-repl/actions)
 
 A website for being able to try out snippets of Thymeleaf code.
 
