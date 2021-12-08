@@ -21,8 +21,8 @@ import java.time.ZonedDateTime
 
 plugins {
 	id 'groovy'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.springframework.boot' version '2.4.12'
 	id 'idea'
 }
 apply from: 'https://raw.githubusercontent.com/ultraq/gradle-support/3.4.0/gradle-support.gradle'
@@ -38,11 +38,11 @@ dependencies {
 		'ch.qos.logback:logback-classic:1.2.3',
 		'javax.inject:javax.inject:1',
 		'nz.net.ultraq.thymeleaf:thymeleaf-spring-environment-dialect:1.1.0-SNAPSHOT',
-		'org.codehaus.groovy:groovy:3.0.7',
-		'org.codehaus.groovy:groovy-json:3.0.7',
-		'org.slf4j:slf4j-api:1.7.30',
-		'org.thymeleaf:thymeleaf:3.0.13.RELEASE',
-		'org.thymeleaf:thymeleaf-spring5:3.0.13.RELEASE'
+		'org.codehaus.groovy:groovy:3.0.9',
+		'org.codehaus.groovy:groovy-json:3.0.9',
+		'org.slf4j:slf4j-api:1.7.32',
+		'org.thymeleaf:thymeleaf:3.0.14.RELEASE',
+		'org.thymeleaf:thymeleaf-spring5:3.0.14.RELEASE'
 	)
 	developmentOnly(
 		'org.springframework.boot:spring-boot-devtools'
