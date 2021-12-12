@@ -58,11 +58,14 @@ class ResponseHeadersFilter implements Filter {
 	@Inject
 	private StandardServletEnvironment environment
 
+	@Lazy
+	private boolean isDevelopment = { environment.activeProfiles.contains('development') } ()
+
 	@Override
 	void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
 
 		if (request.requestURI == '/') {
-			response.addHeader('Content-Security-Policy', (environment.development ? cspDevelopment : cspProduction).join('; '))
+			response.addHeader('Content-Security-Policy', (isDevelopment ? cspDevelopment : cspProduction).join('; '))
 			response.addHeader('X-Content-Type-Options', 'nosniff')
 			response.addHeader('X-Frame-Options', 'DENY')
 			response.addHeader('X-XSS-Protection', '1; mode=block')
