@@ -35,9 +35,9 @@ dependencies {
 		'org.springframework.boot:spring-boot-starter-thymeleaf',
 		'org.springframework.boot:spring-boot-starter-web',
 
-		'ch.qos.logback:logback-classic:1.2.3',
+		'ch.qos.logback:logback-classic:1.2.7',
 		'javax.inject:javax.inject:1',
-		'nz.net.ultraq.thymeleaf:thymeleaf-spring-environment-dialect:1.1.0-SNAPSHOT',
+		'nz.net.ultraq.thymeleaf:thymeleaf-spring-environment-dialect:1.1.0',
 		'org.codehaus.groovy:groovy:3.0.9',
 		'org.codehaus.groovy:groovy-json:3.0.9',
 		'org.slf4j:slf4j-api:1.7.32',
