@@ -25,7 +25,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.12'
 	id 'idea'
 }
-apply from: 'https://raw.githubusercontent.com/ultraq/gradle-support/3.4.0/gradle-support.gradle'
+apply from: 'https://raw.githubusercontent.com/ultraq/gradle-support/4.0.0/gradle-support.gradle'
 
 description = 'A website for being able to try out snippets of Thymeleaf code'
 version = ZonedDateTime.now(ZoneId.of("Pacific/Auckland")).format('yyyy.MM.dd-\'build\'HHmmss')
@@ -50,7 +50,7 @@ dependencies {
 }
 
 processResources {
-	filesMatching(['**/*.properties', '**/org.codehaus.groovy.runtime.ExtensionModule']) {
+	filesMatching('**/*.properties') {
 		filter(ReplaceTokens, tokens: [ 'version': version ])
 	}
 }

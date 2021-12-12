@@ -15,5 +15,5 @@
 # 
 
 moduleName = thymeleaf-repl
-moduleVersion = @version@
+moduleVersion = ${moduleVersion}
 extensionClasses = nz.net.ultraq.thymeleaf.repl.extensions.ThrowableExtensions
