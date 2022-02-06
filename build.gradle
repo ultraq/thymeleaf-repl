@@ -30,6 +30,8 @@ apply from: 'https://raw.githubusercontent.com/ultraq/gradle-support/4.0.0/gradl
 description = 'A website for being able to try out snippets of Thymeleaf code'
 version = ZonedDateTime.now(ZoneId.of("Pacific/Auckland")).format('yyyy.MM.dd-\'build\'HHmmss')
 
+def thymeleafVersion = '3.0.15.RELEASE'
+
 dependencies {
 	implementation(
 		'org.springframework.boot:spring-boot-starter-thymeleaf',
@@ -40,9 +42,9 @@ dependencies {
 		'nz.net.ultraq.thymeleaf:thymeleaf-spring-environment-dialect:1.1.0',
 		'org.codehaus.groovy:groovy:3.0.9',
 		'org.codehaus.groovy:groovy-json:3.0.9',
-		'org.slf4j:slf4j-api:1.7.32',
-		'org.thymeleaf:thymeleaf:3.0.14.RELEASE',
-		'org.thymeleaf:thymeleaf-spring5:3.0.14.RELEASE'
+		'org.slf4j:slf4j-api:1.7.35',
+		"org.thymeleaf:thymeleaf:${thymeleafVersion}",
+		"org.thymeleaf:thymeleaf-spring5:${thymeleafVersion}"
 	)
 	developmentOnly(
 		'org.springframework.boot:spring-boot-devtools'
@@ -51,6 +53,9 @@ dependencies {
 
 processResources {
 	filesMatching('**/*.properties') {
-		filter(ReplaceTokens, tokens: [ 'version': version ])
+		filter(ReplaceTokens, tokens: [
+			'thymeleafVersion': thymeleafVersion,
+			'version': version
+		])
 	}
 }

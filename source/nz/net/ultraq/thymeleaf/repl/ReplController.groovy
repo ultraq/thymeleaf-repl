@@ -48,6 +48,9 @@ class ReplController {
 	@Value('${thymeleaf-repl.version}')
 	private String version
 
+	@Value('${thymeleaf.version}')
+	private String thymeleafVersion
+
 	/**
 	 * Add any global attributes to the model.
 	 * 
@@ -57,6 +60,7 @@ class ReplController {
 	void addAttributes(Model model) {
 
 		model.addAttribute('version', version)
+		model.addAttribute('thymeleafVersion', thymeleafVersion)
 	}
 
 	/**
