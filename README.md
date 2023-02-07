@@ -15,4 +15,4 @@ had to answer lots questions for Thymeleaf, I wished for a similar environment
 for Thymeleaf, so this website aims to be just that for me.
 
 This was hosted on Heroku, but I've since taken it down when they removed their
-free tier offering.  This can instead be run as a local Spring Boot app instead.
+free tier offering.  This can be run as a local Spring Boot app instead.
