@@ -24,7 +24,7 @@ package nz.net.ultraq.thymeleaf.repl.extensions
 class ThrowableExtensions {
 
 	/**
-	 * Go throw the cause stack and pick out the root cause for the exception.
+	 * Go through the cause stack and pick out the root cause for the exception.
 	 * 
 	 * @param self
 	 * @return

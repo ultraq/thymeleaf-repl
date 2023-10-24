@@ -21,27 +21,32 @@ import java.time.ZonedDateTime
 
 plugins {
 	id 'groovy'
-	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-	id 'org.springframework.boot' version '2.7.3'
+	id 'io.spring.dependency-management' version '1.1.3'
+	id 'org.springframework.boot' version '3.1.5'
 	id 'idea'
 }
-apply from: 'https://raw.githubusercontent.com/ultraq/gradle-support/4.3.0/gradle-support.gradle'
+apply from: 'https://raw.githubusercontent.com/ultraq/gradle-support/4.3.1/gradle-support.gradle'
 
 description = 'A website for being able to try out snippets of Thymeleaf code'
 version = ZonedDateTime.now(ZoneId.of("Pacific/Auckland")).format('yyyy.MM.dd-\'build\'HHmmss')
 
-def thymeleafVersion = '3.0.15.RELEASE'
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+}
+
+def groovyVersion = '4.0.15'
+def thymeleafVersion = '3.1.2.RELEASE'
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
-	implementation 'ch.qos.logback:logback-classic:1.2.11'
+	implementation 'ch.qos.logback:logback-classic:1.4.11'
 	implementation 'javax.inject:javax.inject:1'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-spring-environment-dialect:1.2.0'
-	implementation 'org.apache.groovy:groovy:4.0.4'
-	implementation 'org.apache.groovy:groovy-json:4.0.4'
-	implementation 'org.slf4j:slf4j-api:1.7.36'
+	implementation "org.apache.groovy:groovy:${groovyVersion}"
+	implementation "org.apache.groovy:groovy-json:${groovyVersion}"
+	implementation 'org.slf4j:slf4j-api:2.0.9'
 	implementation "org.thymeleaf:thymeleaf:${thymeleafVersion}"
 	implementation "org.thymeleaf:thymeleaf-spring5:${thymeleafVersion}"
 
@@ -55,8 +60,4 @@ processResources {
 			'version': version
 		])
 	}
-}
-
-bootJar {
-	archiveFileName = "${project.name}.jar"
 }
