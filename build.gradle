@@ -53,3 +53,7 @@ configure {
 			'version': version]
 		)
 }
+
+bootJar {
+	archiveFileName = "${project.name}.jar"
+}
