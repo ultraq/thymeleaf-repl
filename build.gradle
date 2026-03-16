@@ -27,12 +27,12 @@ apply plugin: 'io.spring.dependency-management'
 description = 'A website for being able to try out snippets of Thymeleaf code'
 version = ZonedDateTime.now(ZoneId.of("Pacific/Auckland")).format('yyyy.MM.dd-\'build\'HHmmss')
 
-var groovyVersion = '5.0.3'
+var groovyVersion = '5.0.4'
 var thymeleafVersion = '3.1.3.RELEASE'
 
 configure {
 	createGroovyProject()
-		.useJavaVersion(21)
+		.useJavaVersion(25)
 		.useMavenCentralRepositories()
 		.configureSource()
 			.withSourceDirectory('source')
